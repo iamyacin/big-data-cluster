@@ -17,7 +17,7 @@ resource "aws_budgets_budget" "budget-limit" {
   limit_amount      = "5.0"
   limit_unit        = "USD"
   time_unit         = "MONTHLY"
-  time_period_start = "2020-12-12_00.01"
+  time_period_start = "2020-12-12_00:05"
 }
 
 resource "aws_vpc" "my-principal-vpc" {
