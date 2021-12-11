@@ -9,6 +9,8 @@ terraform {
 
 provider "aws" {
   region = "eu-west-3"
+  shared_credentials_file = "/home/yacin/.aws/credentials"
+  profile = "customprofile"
 }
 
 resource "aws_budgets_budget" "budget-limit" {
