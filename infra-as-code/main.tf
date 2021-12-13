@@ -21,6 +21,7 @@ resource "aws_budgets_budget" "budget-limit" {
   time_period_start = "2020-12-12_00:05"
 }
 
+
 resource "aws_vpc" "my-principal-vpc" {
   cidr_block       = "172.16.0.0/16"
   instance_tenancy = "default"
@@ -30,9 +31,18 @@ resource "aws_vpc" "my-principal-vpc" {
   }
 }
 
+resource "aws_internet_gateway" "my-internet-gw" {
+  vpc_id = aws_vpc.my-principal-vpc.id
+
+  tags = {
+    Name = "my-internet-gw"
+  }
+}
+
 resource "aws_subnet" "big-data-subnet" {
-  vpc_id     = aws_vpc.my-principal-vpc.id
-  cidr_block = "172.16.100.0/24"
+  vpc_id                  = aws_vpc.my-principal-vpc.id
+  cidr_block              = "172.16.100.0/24"
+  map_public_ip_on_launch = "true"
 
   tags = {
     Name = "big-data-subnet"
@@ -50,10 +60,9 @@ module "ec2_instance" {
   ami                    = "ami-0df7d9cc2767d16cd"
   instance_type          = "t2.micro"
   key_name               = "mykey"
-  monitoring             = true
+  monitoring             = "true"
   vpc_security_group_ids = ["sg-0320b334b454f8ff9"]
   subnet_id              = aws_subnet.big-data-subnet.id
-  associate_public_ip_address = "true"
 
   tags = {
     Terraform   = "true"
