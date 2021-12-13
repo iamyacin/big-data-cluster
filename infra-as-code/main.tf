@@ -51,7 +51,7 @@ module "ec2_instance" {
   instance_type          = "t2.micro"
   key_name               = "mykey"
   monitoring             = true
-  vpc_security_group_ids = ["sg-0320b334b454f8ff9", "sg-05c20dd483331b921"]
+  vpc_security_group_ids = ["sg-0320b334b454f8ff9"]
   subnet_id              = aws_subnet.big-data-subnet.id
 
   tags = {
