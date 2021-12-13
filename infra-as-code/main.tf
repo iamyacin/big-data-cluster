@@ -53,6 +53,7 @@ module "ec2_instance" {
   monitoring             = true
   vpc_security_group_ids = ["sg-0320b334b454f8ff9"]
   subnet_id              = aws_subnet.big-data-subnet.id
+  associate_public_ip_address = "true"
 
   tags = {
     Terraform   = "true"
