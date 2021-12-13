@@ -2,7 +2,7 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 3.5.0"
+      version = ">= 3.51.0"
     }
   }
 }
@@ -41,7 +41,7 @@ resource "aws_subnet" "big-data-subnet" {
 
 module "ec2_instance" {
   source  = "terraform-aws-modules/ec2-instance/aws"
-  version = "~> 3.0"
+  version = ">= 3.3.0"
 
   for_each = toset(["master-1", "master-2", "slave-1", "slave-2", "slave-3"])
 
