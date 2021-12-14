@@ -1,5 +1,5 @@
 resource "aws_vpc" "my-principal-vpc" {
-  cidr_block       = "172.16.0.0/16"
+  cidr_block = "172.16.0.0/16"
 
   tags = {
     Name = "big-data-vpc"
@@ -7,7 +7,7 @@ resource "aws_vpc" "my-principal-vpc" {
 }
 
 resource "aws_network_acl" "my-nacl" {
-  vpc_id = aws_vpc.main.id
+  vpc_id = aws_vpc.my-principal-vpc.id 
 
   egress {
     protocol   = "-1"
@@ -64,6 +64,6 @@ resource "aws_subnet" "big-data-subnet" {
 }
 
 resource "aws_route_table_association" "rt-to-subnet" {
-    subnet_id = aws_subnet.big-data-subnet.id
-    route_table_id = aws_route_table.my-rt.id 
+  subnet_id      = aws_subnet.big-data-subnet.id
+  route_table_id = aws_route_table.my-rt.id
 }
