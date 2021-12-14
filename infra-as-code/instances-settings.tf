@@ -1,5 +1,3 @@
-
-
 module "ec2_instance" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = ">= 3.3.0"
@@ -8,12 +6,11 @@ module "ec2_instance" {
 
   name = "bigdata-${each.key}"
 
-  ami                         = "ami-0df7d9cc2767d16cd"
+  ami                         = "ami-0c6ebbd55ab05f070"
   instance_type               = "t2.micro"
   key_name                    = "mykey"
-  associate_public_ip_address = "true"
   monitoring                  = "true"
-  vpc_security_group_ids      = ["sg-0320b334b454f8ff9"]
+  vpc_security_group_ids      = ["sg-05741685675f8c261"]
   subnet_id                   = aws_subnet.big-data-subnet.id
 
   tags = {

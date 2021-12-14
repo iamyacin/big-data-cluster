@@ -1,3 +1,6 @@
 infra-as-code/.terraform
+infra-as-code/terraform.tfstate
+infra-as-code/terraform.tfstate.backup
+infra-as-code/.terraform.lock.hcl
 
 install-tools-and-configure-nodes/AWSKeys
