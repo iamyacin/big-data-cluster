@@ -1,15 +1,19 @@
-[all_cluster]
-13.38.97.113 ansible_ssh_private_key_file=AWSKeys/mykey.pem ansible_user=ubuntu
-13.38.102.26 ansible_ssh_private_key_file=AWSKeys/mykey.pem ansible_user=ubuntu
-15.237.36.225 ansible_ssh_private_key_file=AWSKeys/mykey.pem ansible_user=ubuntu
-13.38.88.179 ansible_ssh_private_key_file=AWSKeys/mykey.pem ansible_user=ubuntu
-13.38.97.187 ansible_ssh_private_key_file=AWSKeys/mykey.pem ansible_user=ubuntu
+[bd_cluster]
+13.38.97.113 
+13.38.102.26 
+15.237.36.225
+13.38.88.179 
+13.38.97.187 
 
 [cluster_masters]
-13.38.97.113 ansible_ssh_private_key_file=AWSKeys/mykey.pem ansible_user=ubuntu
-13.38.102.26 ansible_ssh_private_key_file=AWSKeys/mykey.pem ansible_user=ubuntu
+13.38.97.113 
+13.38.102.26 
 
 [cluster_slaves]
-15.237.36.225 ansible_ssh_private_key_file=AWSKeys/mykey.pem ansible_user=ubuntu
-13.38.88.179 ansible_ssh_private_key_file=AWSKeys/mykey.pem ansible_user=ubuntu
-13.38.97.187 ansible_ssh_private_key_file=AWSKeys/mykey.pem ansible_user=ubuntu
+15.237.36.225 
+13.38.88.179 
+13.38.97.187 
+
+[bd_cluster:vars]
+ansible_ssh_private_key_file=AWSKeys/mykey.pem
+ansible_user=ubuntu
