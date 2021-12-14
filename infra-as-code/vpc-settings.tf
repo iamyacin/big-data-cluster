@@ -69,7 +69,7 @@ resource "aws_route_table_association" "rt-to-subnet" {
     route_table_id = aws_route_table.my-rt.id 
 }
 
-resource "aws_security_group" "allow_ssh" {
+resource "aws_security_group" "allow-ssh" {
   name        = "allow_ssh"
   description = "Allow SSH inbound traffic"
   vpc_id      = aws_vpc.my-principal-vpc.id

@@ -13,7 +13,7 @@ module "ec2_instance" {
   key_name                    = "mykey"
   associate_public_ip_address = "true"
   monitoring                  = "true"
-  vpc_security_group_ids      = ["sg-0320b334b454f8ff9"]
+  vpc_security_group_ids      = aws_security_group.allow-ssh.id
   subnet_id                   = aws_subnet.big-data-subnet.id
 
   tags = {
