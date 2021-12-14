@@ -13,12 +13,12 @@ provider "aws" {
 }
 
 resource "aws_subnet" "big-data-subnet" {
-  vpc_id                  = aws_vpc.main-vpc.id
-  cidr_block              = "172.16.100.0/24"
+  vpc_id     = "vpc-0ec182622a24f0784"
+  cidr_block = "172.16.100.0/24"
 
   tags = {
-    Name = "big-data-subnet"
-    Terraform   = "true"
+    Name      = "big-data-subnet"
+    Terraform = "true"
   }
 }
 
