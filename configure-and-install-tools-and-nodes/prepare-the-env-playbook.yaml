@@ -1,0 +1,14 @@
+---
+  - name: Configure DNS file /etc/hosts
+    hosts: bigdata_cluster
+    become: true
+    tasks:
+      - name: Modification of /etc/hosts
+        blockinfile:
+          path: /etc/hosts  
+          block: |
+            10.10.10.130 bigdata-master-1
+            10.10.10.27 bigdata-master-2
+            10.10.10.121 bigdata-slave-1
+            10.10.10.214 bigdata-slave-2
+            10.10.10.242 bigdata-slave-3
