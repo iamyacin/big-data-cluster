@@ -13,7 +13,7 @@
             10.10.10.214 bigdata-slave-2
             10.10.10.242 bigdata-slave-3
 
-  - name: Configuring ssh connection between 
+  - name: Configuring ssh connection between cluster nodes
     hosts: bigdata_cluster
     tasks:
       - name: Generate an OpenSSH keypair
@@ -23,3 +23,20 @@
         copy:
           src: ./authorized_keys
           dest: ~/.ssh/
+
+  - name: Install and Configure JDK
+    hosts: bigdata_cluster
+    tasks:
+      - name: Install JDK 8
+        become: true
+        apt:
+          name: openjdk-8-jdk-headless
+      - name: Add JAVA_HOME envirenment variable and add java to path
+        blockinfile:
+          path: ~/.bashrc  
+          block: |
+            #Java :
+            export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
+
+            export PATH=$PATH:$JAVA_HOME/bin
+
