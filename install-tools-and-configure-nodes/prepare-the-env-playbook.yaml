@@ -17,5 +17,9 @@
     hosts: bigdata_cluster
     tasks:
       - name: Generate an OpenSSH keypair
-        community.crypto.openssh_keypair:
+        openssh_keypair:
           path: ~/.ssh/id_rsa
+      - name: Add public keys to authorized on every node
+        copy:
+          src: ./authorized_keys
+          dest: ~/.ssh/
