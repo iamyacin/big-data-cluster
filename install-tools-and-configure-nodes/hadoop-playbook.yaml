@@ -1,0 +1,17 @@
+---
+  - name: Download and extract hadoop binaries
+    hosts: bigdata_cluster
+    tasks:
+      - name: Download hadoop binaries
+        get_url:
+          url: https://archive.apache.org/dist/hadoop/core/hadoop-2.7.3/hadoop-2.7.3.tar.gz
+          dest: ~/
+      - name: Extract hadoop binaries
+        unarchive:
+          src: ~/hadoop-2.7.3.tar.gz
+          dest: ~/
+          remote_src: yes
+      - name: Remove Archived file
+        file:
+          path: ~/hadoop-2.7.3.tar.gz
+          state: absent
