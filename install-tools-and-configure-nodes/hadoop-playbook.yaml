@@ -11,7 +11,24 @@
           src: ~/hadoop-2.7.3.tar.gz
           dest: ~/
           remote_src: yes
-      - name: Remove Archived file
-        file:
-          path: ~/hadoop-2.7.3.tar.gz
-          state: absent
+#      - name: Remove Archived file
+#        file:
+#          path: ~/hadoop-2.7.3.tar.gz
+#          state: absent
+
+  - name: Configure hadoop
+    hosts: bigdata_cluster
+    tasks:
+      - name: Add Hadoop envirenment variables and add hadoop's bin to path
+        blockinfile:
+          path: ~/.bashrc
+          block: |
+            # Hadoop :
+            export HADOOP_HOME=$HOME/hadoop-2.7.3
+            export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
+            export HADOOP_MAPRED_HOME=$HADOOP_HOME
+            export HADOOP_COMMON_HOME=$HADOOP_HOME
+            export HADOOP_HDFS_HOME=$HADOOP_HOME
+            export YARN_HOME=$HADOOP_HOME
+
+            export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
